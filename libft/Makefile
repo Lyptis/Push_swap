@@ -6,7 +6,7 @@
 #    By: svanmeen <svanmeen@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 14:27:36 by svanmeen          #+#    #+#              #
-#    Updated: 2022/12/17 13:22:06 by svanmeen         ###   ########.fr        #
+#    Updated: 2023/01/18 15:22:58 by svanmeen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS	=	ft_isalpha.c	ft_isdigit.c	ft_isalnum.c	ft_isascii.c	ft_isprint.c	ft_strle
 			ft_memset.c		ft_memmove.c	ft_atoi.c		ft_calloc.c		ft_strdup.c		ft_substr.c		\
 			ft_strjoin.c	ft_strtrim.c	ft_split.c		ft_itoa.c		ft_putchar_fd.c	ft_putstr_fd.c	\
 			ft_putendl_fd.c	ft_putnbr_fd.c	ft_strmapi.c	ft_striteri.c	get_next_line.c					\
-			get_next_line_utils.c
+			get_next_line_utils.c	utils_printf.c	ft_printf.c	ft_printf_hex.c
 HSRC	= ../libft.h
 OBJS	= ${SRCS:.c=.o}
 

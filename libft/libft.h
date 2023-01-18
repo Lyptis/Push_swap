@@ -6,7 +6,7 @@
 /*   By: svanmeen <svanmeen@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:48:29 by svanmeen          #+#    #+#             */
-/*   Updated: 2022/12/12 13:39:43 by svanmeen         ###   ########.fr       */
+/*   Updated: 2023/01/18 15:20:31 by svanmeen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdint.h>
+# include <stdarg.h>
+# include <inttypes.h>
+# include <limits.h>
 
 typedef struct s_list
 {
@@ -65,5 +68,15 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
+
+int	ft_printf(const char *format, ...);
+
+int	ft_putchar_fd_printf(char c, int fd);
+int	ft_putstr_fd_printf(char *s, int fd);
+int	ft_putptr(uintptr_t val);
+int	ft_putnbr_fd_printf(long nb, int fd, int len);
+int	ft_putunbr_fd(unsigned int nb, int fd, int len);
+int	ft_put_hexc_nbr_fd(unsigned int nb, int fd, int len);
+int	ft_put_hexm_nbr_fd(unsigned int nb, int fd, int len);
 
 #endif

@@ -6,12 +6,11 @@
 /*   By: svanmeen <svanmeen@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:13:37 by svanmeen          #+#    #+#             */
-/*   Updated: 2022/12/14 12:49:18 by svanmeen         ###   ########.fr       */
+/*   Updated: 2023/01/18 15:26:11 by svanmeen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static int	ft_get_nb_w(char *s, char c)
 {

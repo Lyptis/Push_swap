@@ -6,71 +6,81 @@
 /*   By: svanmeen <svanmeen@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:03:50 by svanmeen          #+#    #+#             */
-/*   Updated: 2023/01/12 16:33:24 by svanmeen         ###   ########.fr       */
+/*   Updated: 2023/01/18 16:43:48 by svanmeen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-char	*ft_swap_a(int *tab)
+void	ft_swap(t_stack **stack, char c)
 {
-	int	tmp;
+	t_stack	*cur;
+	t_stack	*cur2;
 
-	tmp = tab[1];
-	tab[1] = tab[0];
-	tab[0] = tmp;
-	return ("sa");
-}
-
-char	*ft_swap_b(int *tab)
-{
-	int	tmp;
-
-	tmp = tab[1];
-	tab[1] = tab[0];
-	tab[0] = tmp;
-	return ("sb");
-}
-
-char	*ft_ss(int *tab_a, int tab_b)
-{
-	ft_swap_a(tab_a);
-	ft_swap_b(tab_b);
-	return ("ss");
-}
-
-char	*ft_push_a(int *tab_a, int *tab_b, int size)
-{
-	int	tmp;
-	int	i;
-
-	tmp = tab_b[0];
-	i = 0;
-	while (i <= size)
-		tab_b[i] = tab_b[++i];
-	i = 0;
-	while (size > 0)
+	cur = *stack;
+	if (cur->next && (c == 'a' || c == 'b' || c == 's'))
 	{
-		tab_a[size] = tab_a[size - 1];
-		size--;
+		if (!(c == 's'))
+			ft_printf("s%c\n", c);
+		cur2 = cur->next;
+		cur->next = cur2->next;
+		*stack = cur2;
+		cur2->next = cur;
 	}
-	tab_a[0] = tmp;
 }
 
-char	*ft_push_b(int *tab_a, int *tab_b, int size)
+void	ft_swaps(t_stack **stack_a, t_stack **stack_b)
 {
-	int	tmp;
-	int	i;
+	ft_printf("ss\n");
+	ft_swap(stack_a, 's');
+	ft_swap(stack_b, 's');
+}
 
-	tmp = tab_a[0];
-	i = 0;
-	while (i <= size)
-		tab_a[i] = tab_a[++i];
-	i = 0;
-	while (size > 0)
+void	ft_push(t_stack **stack_a, t_stack **stack_b, char c)
+{
+	t_stack	*cursor_a;
+	t_stack	*cursor_b;
+
+	if (c == 'a')
 	{
-		tab_b[size] = tab_b[size - 1];
-		size--;
+		cursor_a = *stack_a;
+		*stack_a = cursor_a->next;
+		cursor_a->next = *stack_b;
+		*stack_b = cursor_a;
 	}
-	tab_b[0] = tmp;
+	else if (c == 'b')
+	{
+		cursor_b = *stack_b;
+		*stack_b = cursor_b->next;
+		cursor_b->next = *stack_a;
+		*stack_a = cursor_b;
+	}
+	ft_printf("p%c\n", c);
+}
+
+void	ft_rotate(t_stack **stack, char c)
+{
+	t_stack	*cursor;
+
+	if (c == 'a' || c == 'b' || c == 's')
+	{
+		cursor = *stack;
+		if (cursor->next)
+		{
+			while (cursor->next)
+				cursor = cursor->next;
+			cursor->next = *stack;
+			*stack = (*stack)->next;
+			cursor->next->next = 0;
+		}
+		if (c != 'r')
+			ft_printf("r%c\n", c);
+	}
+}
+
+void	ft_rotater(t_stack **stack_a, t_stack **stack_b)
+{
+	ft_rotate(stack_a, 's');
+	ft_rotate(stack_b, 's');
+	ft_printf("rr\n");
 }

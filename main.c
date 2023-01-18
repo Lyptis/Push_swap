@@ -6,58 +6,51 @@
 /*   By: svanmeen <svanmeen@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:35:54 by svanmeen          #+#    #+#             */
-/*   Updated: 2023/01/16 15:36:03 by svanmeen         ###   ########.fr       */
+/*   Updated: 2023/01/18 16:40:07 by svanmeen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int	ft_get_input(int argc, t_pile *input, char **argv)
+void	print_stack(t_stack **stack)
 {
-	t_pile	*tmp;
-	int		i;
+	t_stack	*current;
 
-	i = 0;
-	tmp = input;
-
-	while (i < argc - 1)
+	if (!*stack)
 	{
-		if (ft_check(argv[i + 1]) != 0)
-		{
-			tmp->val = ft_atoi(argv[i + 1]);
-			tmp->next = malloc(sizeof(t_pile));
-			tmp = tmp->next;
-			i++;
-		}
-		else
-			return (1);
+		ft_printf("stack vide\n");
 	}
-	tmp->next = NULL;
+	else
+	{
+		current = *stack;
+		while (current->next)
+		{
+			ft_printf("%d ", current->sim);
+			current = current->next;
+		}
+		ft_printf("%d\n", current->sim);
+	}
 }
+
+
 
 int	main(int argc, char **argv)
 {
-	t_pile	*input;
-	t_pile	*pile_a;
-	int		i;
+	t_stack	**stack_a;
+	t_stack	**stack_b;
 
-	i = 0;
 	if (argc < 2)
-		return (printf("Error\n"));
-	input = malloc(sizeof(t_pile));
-	if(ft_get_input(argc, input, argv) == 1)
-	{
-		return (printf("Error"));
-		//free()
-	}
-	if (is_a_sort(input) == 1)
+		return (ft_putendl_fd("Error", 2), 1);
+	stack_a = malloc(sizeof(t_stack));
+	stack_b = malloc(sizeof(t_stack));
+	*stack_a = 0;
+	*stack_b = 0;
+	if (ft_get_input(argc, stack_a, argv) == 1)
+		return (ft_putendl_fd("Error", 2), 1);
+	if (set_indexs(stack_a, argc - 1) == 1)
 		return (0);
-	pile_a = malloc(sizeof(t_pile));
-	ft_cpy(input, pile_a, argc - 1);
-	//i = 0;
-	while (input->next != NULL)
-	{
-		printf("%d ", input->simp);
-		input = input->next;
-	}
+	print_stack(stack_a);
+	ft_sort(stack_a, stack_b, argc - 1);
+	print_stack(stack_a);
+
 }
