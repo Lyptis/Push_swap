@@ -6,7 +6,7 @@
 /*   By: svanmeen <svanmeen@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:35:54 by svanmeen          #+#    #+#             */
-/*   Updated: 2023/01/18 16:40:07 by svanmeen         ###   ########.fr       */
+/*   Updated: 2023/01/19 10:27:11 by svanmeen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ void	print_stack(t_stack **stack)
 	}
 }
 
-
-
 int	main(int argc, char **argv)
 {
 	t_stack	**stack_a;
@@ -52,5 +50,6 @@ int	main(int argc, char **argv)
 	print_stack(stack_a);
 	ft_sort(stack_a, stack_b, argc - 1);
 	print_stack(stack_a);
+	print_stack(stack_b);
 
 }
