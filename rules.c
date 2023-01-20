@@ -6,7 +6,7 @@
 /*   By: svanmeen <svanmeen@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:03:50 by svanmeen          #+#    #+#             */
-/*   Updated: 2023/01/18 16:43:48 by svanmeen         ###   ########.fr       */
+/*   Updated: 2023/01/20 12:46:04 by svanmeen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ void	ft_push(t_stack **stack_a, t_stack **stack_b, char c)
 	t_stack	*cursor_a;
 	t_stack	*cursor_b;
 
-	if (c == 'a')
+	if (c == 'b')
 	{
 		cursor_a = *stack_a;
 		*stack_a = cursor_a->next;
 		cursor_a->next = *stack_b;
 		*stack_b = cursor_a;
 	}
-	else if (c == 'b')
+	else if (c == 'a')
 	{
 		cursor_b = *stack_b;
 		*stack_b = cursor_b->next;

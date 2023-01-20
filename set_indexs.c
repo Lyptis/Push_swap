@@ -6,13 +6,13 @@
 /*   By: svanmeen <svanmeen@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:36:39 by svanmeen          #+#    #+#             */
-/*   Updated: 2023/01/18 16:53:00 by svanmeen         ###   ########.fr       */
+/*   Updated: 2023/01/20 15:20:53 by svanmeen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-static t_stack	*ft_i_min(t_stack **stack)
+t_stack	*ft_i_min(t_stack **stack)
 {
 	t_stack	*tmp;
 	t_stack	*tmp2;
@@ -61,7 +61,7 @@ int	set_indexs(t_stack **stack, int size)
 	t_stack	*cursor;
 	int		nbp;
 
-	if (is_a_sort(stack) == 1)
+	if (is_a_sort(stack))
 		return (1);
 	nbp = size - 1;
 	while (nbp >= 0)

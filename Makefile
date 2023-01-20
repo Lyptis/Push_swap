@@ -1,4 +1,5 @@
-SRCS	=	main.c	set_indexs.c get_input.c rules.c	rules2.c sort.c
+SRCS	=	main.c		set_indexs.c	get_input.c		rules.c		\
+			rules2.c	sort.c			sort_five.c		utils.c
 HSRC	=	pushswap.h
 OBJS	=	${SRCS:.c=.o}
 
@@ -6,7 +7,7 @@ NAME	= push_swap
 
 GCC		= gcc
 RM		= rm -f
-FLAGS	= #-Wall -Wextra -Werror
+FLAGS	= -Wall -Wextra -Werror
 
 .c.o:		${HSRC}
 			${GCC} ${FLAGS} -c $< -o ${<:.c=.o}

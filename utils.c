@@ -1,42 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: svanmeen <svanmeen@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 10:32:55 by svanmeen          #+#    #+#             */
-/*   Updated: 2023/01/20 15:51:12 by svanmeen         ###   ########.fr       */
+/*   Created: 2023/01/20 13:45:04 by svanmeen          #+#    #+#             */
+/*   Updated: 2023/01/20 16:09:33 by svanmeen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pushswap.h"
 
-int	ft_atoi(const char *str)
+void	ft_free_input(char **input)
 {
-	char	*s;
-	int		i;
-	int		sign;
-	long	result;
+	int	i;
 
-	s = (char *)str;
 	i = 0;
-	result = 0;
-	sign = 1;
-	while ((s[i] > 8 && s[i] < 14) || s[i] == 32)
-		i++;
-	if (s[i] == 43 || s[i] == 45)
+	while (input[i])
 	{
-		if (s[i] == 45)
-			sign = sign * -1;
+		free(input[i]);
 		i++;
 	}
-	while (s[i] > 47 && s[i] < 58)
+	free(input);
+}
+
+int	ft_check_same(t_stack **stack)
+{
+	t_stack	*tmp;
+	t_stack	*tmp2;
+
+	tmp = *stack;
+	while (tmp)
 	{
-		result = result * 10 + (s[i] - 48);
-		i++;
+		tmp2 = tmp->next;
+		while (tmp2)
+		{
+			if (tmp->val == tmp2->val)
+				return (1);
+			tmp2 = tmp2->next;
+		}
+		tmp = tmp->next;
 	}
-	if (result > 2147483647 || result < -2147483648)
-		return (-1);
-	return (result * sign);
+	return (0);
 }

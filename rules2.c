@@ -6,7 +6,7 @@
 /*   By: svanmeen <svanmeen@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:33:36 by svanmeen          #+#    #+#             */
-/*   Updated: 2023/01/18 16:26:37 by svanmeen         ###   ########.fr       */
+/*   Updated: 2023/01/20 13:08:20 by svanmeen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,18 @@ void	ft_rrotater(t_stack **stack_a, t_stack **stack_b)
 	ft_rrotate(stack_a, 's');
 	ft_rrotate(stack_b, 's');
 	ft_printf("rrr\n");
+}
+
+void	ft_push_all(t_stack **stack_a, t_stack **stack_b, char c)
+{
+	if (c == 'b')
+	{
+		while ((*stack_a))
+			ft_push(stack_a, stack_b, 'b');
+	}
+	else
+	{
+		while ((*stack_b))
+			ft_push(stack_a, stack_b, 'a');
+	}
 }
