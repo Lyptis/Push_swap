@@ -6,7 +6,7 @@
 /*   By: svanmeen <svanmeen@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:34:30 by svanmeen          #+#    #+#             */
-/*   Updated: 2023/01/20 16:09:47 by svanmeen         ###   ########.fr       */
+/*   Updated: 2023/01/26 11:25:33 by svanmeen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,19 @@ static int	ft_check(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if ((str[i] >= 48 && str[i] <= 57) || str[i] == 45 || str[i] == 43)
+		if (str[i] == 45 || str[i] == 43)
+		{
+			i++;
+			if ((str[i] == 45 && str[i] == 43) || i >= 2)
+				return (1);
+		}
+		else if (str[i] >= 48 && str[i] <= 57)
 			i++;
 		else
 			return (1);
 	}
+	if (str[i - 1] == 43 || str[i - 1] == 45)
+		return (1);
 	return (0);
 }
 
@@ -47,7 +55,10 @@ t_stack	*ft_create(char *str)
 	if (!nb)
 		return (NULL);
 	if (ft_strlen(str) >= 10 && ft_atoi(str) == -1)
+	{
+		free(nb);
 		return (NULL);
+	}
 	else
 		nb->val = ft_atoi(str);
 	nb->sim = 0;

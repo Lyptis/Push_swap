@@ -6,7 +6,7 @@
 /*   By: svanmeen <svanmeen@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:36:39 by svanmeen          #+#    #+#             */
-/*   Updated: 2023/01/20 15:20:53 by svanmeen         ###   ########.fr       */
+/*   Updated: 2023/01/26 11:14:44 by svanmeen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	is_a_sort(t_stack **stack)
 	t_stack	*cursor2;
 
 	cursor = *stack;
+	if (!(*stack))
+		return (1);
 	if (cursor->next)
 		cursor2 = cursor->next;
 	else

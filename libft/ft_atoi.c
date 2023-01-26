@@ -6,7 +6,7 @@
 /*   By: svanmeen <svanmeen@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:32:55 by svanmeen          #+#    #+#             */
-/*   Updated: 2023/01/20 15:51:12 by svanmeen         ###   ########.fr       */
+/*   Updated: 2023/01/26 13:47:00 by svanmeen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_atoi(const char *str)
 		result = result * 10 + (s[i] - 48);
 		i++;
 	}
-	if (result > 2147483647 || result < -2147483648)
+	if ((result > 2147483648 && sign < 0) || (result > 2147483647 && sign > 0))
 		return (-1);
 	return (result * sign);
 }
